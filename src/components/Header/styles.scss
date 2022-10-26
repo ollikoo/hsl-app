@@ -1,0 +1,24 @@
+@use "../../utils" as u;
+
+.header {
+  width: 100%;
+  border: 1px dashed green;
+  padding: u.remCalc(24) u.remCalc(16);
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  justify-content: space-between;
+  pointer-events: none;
+
+  @include u.breakpoint(desktop) {
+    padding: u.remCalc(50) u.remCalc(40);
+  }
+
+  &__logo {
+    pointer-events: all;
+  }
+
+  &__time {
+    pointer-events: all;
+  }
+}

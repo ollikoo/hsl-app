@@ -1,0 +1,13 @@
+@use "../../utils" as u;
+
+.container {
+  width: 100%;
+  padding: 0 u.remCalc(24);
+  margin-top: u.remCalc(116);
+
+  @include u.breakpoint(desktop) {
+    max-width: u.remCalc(801);
+    margin: 0 auto;
+    margin-top: u.remCalc(48);
+  }
+}

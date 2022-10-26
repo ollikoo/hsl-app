@@ -1,0 +1,73 @@
+@use "utils" as u;
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+p {
+  color: u.$dark-grey;
+  font-size: u.remCalc(16);
+  font-weight: 400;
+  line-height: u.remCalc(24);
+
+  &.light {
+    color: u.$light-grey;
+    font-weight: 500;
+    font-size: u.remCalc(14);
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  color: u.$dark-grey;
+}
+
+h1 {
+  font-size: u.remCalc(20);
+  line-height: u.remCalc(24);
+  letter-spacing: u.remCalc(-0.2);
+
+  @include u.breakpoint(desktop) {
+    line-height: u.remCalc(32);
+  }
+}
+
+h2 {
+  font-size: u.remCalc(16);
+  line-height: u.remCalc(24);
+
+  @include u.breakpoint(desktop) {
+    font-size: u.remCalc(54);
+    line-height: u.remCalc(64.8);
+    letter-spacing: u.remCalc(-0.6);
+  }
+}
+
+h3 {
+  font-size: u.remCalc(16);
+  line-height: u.remCalc(24);
+
+  @include u.breakpoint(desktop) {
+    font-size: u.remCalc(54);
+    line-height: u.remCalc(64.8);
+    letter-spacing: u.remCalc(-0.6);
+  }
+}

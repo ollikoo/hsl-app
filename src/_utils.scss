@@ -1,0 +1,28 @@
+$white: #ffffff !default;
+$light-grey: #909090 !default;
+$grey: #d4d9de !default;
+$dark-grey: #222222 !default;
+$green: #00ad09 !default;
+$red: #ff0000 !default;
+$background: $grey !default;
+$success: $green !default;
+$alert: $red !default;
+
+@function remCalc($size) {
+  $remSize: calc($size / 16);
+  @return #{$remSize}rem;
+}
+
+$breakpoints: (
+  desktop: remCalc(1036),
+);
+
+@mixin breakpoint($name) {
+  @if not map-has-key($breakpoints, $name) {
+    @warn "Invalid breakpoint `#{$name}`.";
+  } @else {
+    @media (min-width: map-get($breakpoints, $name)) {
+      @content;
+    }
+  }
+}

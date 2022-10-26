@@ -1,0 +1,38 @@
+@use "../../utils" as u;
+
+.background-animation {
+  position: fixed;
+  width: 100vw;
+  height: auto;
+  pointer-events: none;
+  left: 0;
+  animation: slideIn 1s;
+  bottom: 0;
+  display: none;
+
+  @include u.breakpoint(desktop) {
+    display: block;
+  }
+}
+
+#ef27DFTzZAO11_to {
+  animation: ef27DFTzZAO11_to__to 20000ms linear 1s infinite;
+}
+
+@keyframes slideIn {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes ef27DFTzZAO11_to__to {
+  0% {
+    transform: translate(1474px, 32.831711px);
+  }
+  100% {
+    transform: translate(-218px, 32.831711px);
+  }
+}
