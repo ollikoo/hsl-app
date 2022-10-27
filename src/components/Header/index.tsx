@@ -32,11 +32,11 @@ const Header = () => {
       </div>
       <div className="header__time">
         {clock && (
-          <h2>
+          <h3>
             {clock.hours < 10 ? "0" : ""}
             {clock.hours}:{clock.minutes < 10 ? "0" : ""}
             {clock.minutes}
-          </h2>
+          </h3>
         )}
       </div>
     </div>

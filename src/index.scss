@@ -18,6 +18,7 @@ body {
 html,
 body {
   height: 100%;
+  background-color: u.$grey;
 }
 
 p {
@@ -51,8 +52,9 @@ h1 {
 }
 
 h2 {
-  font-size: u.remCalc(16);
-  line-height: u.remCalc(24);
+  font-size: u.remCalc(34);
+  line-height: u.remCalc(40);
+  letter-spacing: u.remCalc(-0.4);
 
   @include u.breakpoint(desktop) {
     font-size: u.remCalc(54);

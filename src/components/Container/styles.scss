@@ -3,11 +3,22 @@
 .container {
   width: 100%;
   padding: 0 u.remCalc(24);
-  margin-top: u.remCalc(116);
+  padding-top: u.remCalc(116);
+  border: 1px dashed blue;
+
+  h2 {
+    margin-top: u.remCalc(28);
+    margin-bottom: u.remCalc(42);
+  }
 
   @include u.breakpoint(desktop) {
-    max-width: u.remCalc(801);
+    max-width: u.remCalc(802);
     margin: 0 auto;
-    margin-top: u.remCalc(48);
+    padding-top: u.remCalc(48);
+    margin-bottom: u.remCalc(32);
+
+    h2 {
+      margin-top: u.remCalc(80);
+    }
   }
 }
