@@ -1,6 +1,8 @@
 @use "../../utils" as u;
 
 .time-table {
+  position: relative;
   width: 100%;
-  border: 1px dashed red;
+  z-index: 1;
+  padding-bottom: u.remCalc(42);
 }

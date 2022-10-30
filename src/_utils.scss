@@ -14,7 +14,7 @@ $alert: $red !default;
 }
 
 $breakpoints: (
-  desktop: remCalc(1200),
+  desktop: remCalc(1048),
 );
 
 @mixin breakpoint($name) {

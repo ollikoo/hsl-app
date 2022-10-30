@@ -1451,27 +1451,21 @@ export type BusStopQueryVariables = Exact<{
 }>;
 
 
-export type BusStopQuery = { __typename?: 'QueryType', stop?: { __typename?: 'Stop', gtfsId: string, name: string, routes?: Array<{ __typename?: 'Route', gtfsId: string, shortName?: string | null, mode?: Mode | null, trips?: Array<{ __typename?: 'Trip', gtfsId: string, stoptimes?: Array<{ __typename?: 'Stoptime', scheduledArrival?: number | null, realtimeArrival?: number | null, arrivalDelay?: number | null, realtime?: boolean | null, realtimeState?: RealtimeState | null } | null> | null } | null> | null }> | null } | null };
+export type BusStopQuery = { __typename?: 'QueryType', stop?: { __typename?: 'Stop', name: string, stoptimesWithoutPatterns?: Array<{ __typename?: 'Stoptime', scheduledDeparture?: number | null, realtimeDeparture?: number | null, realtime?: boolean | null, realtimeState?: RealtimeState | null, serviceDay?: any | null, trip?: { __typename?: 'Trip', routeShortName?: string | null } | null } | null> | null } | null };
 
 
 export const BusStopDocument = gql`
     query BusStop($stopId: String!) {
   stop(id: $stopId) {
-    gtfsId
     name
-    routes {
-      gtfsId
-      shortName
-      mode
-      trips {
-        gtfsId
-        stoptimes {
-          scheduledArrival
-          realtimeArrival
-          arrivalDelay
-          realtime
-          realtimeState
-        }
+    stoptimesWithoutPatterns(startTime: 0) {
+      scheduledDeparture
+      realtimeDeparture
+      realtime
+      realtimeState
+      serviceDay
+      trip {
+        routeShortName
       }
     }
   }

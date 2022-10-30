@@ -1,3 +1,14 @@
+# Assignment
+
+Develop with typescript a react frontend application that shows all busses from stop id: “HSL:1201110” Energia-
+aukio, when they are coming in minutes and if the bus is late.
+
+Use following HSL GraphQL API documented here: https://digitransit.fi/en/developers/apis/1-routing-api/0-graphql/.
+
+You can create your query(s) in sandbox here: https://api.digitransit.fi/graphiql/hsl.
+
+Use the provided designs.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,0 +1,66 @@
+@use "../../utils" as u;
+
+.time-table-item {
+  position: relative;
+  width: 100%;
+  height: u.remCalc(65);
+  background-color: u.$white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+
+  &:not(:last-of-type) {
+    margin-bottom: u.remCalc(8);
+  }
+
+  @include u.breakpoint(desktop) {
+    max-width: u.remCalc(608);
+  }
+
+  &__indicator {
+    width: u.remCalc(4);
+    height: u.remCalc(48);
+    border-radius: 0 u.remCalc(8) u.remCalc(8) 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &--success {
+      background-color: u.$success;
+    }
+
+    &--alert {
+      background-color: u.$alert;
+    }
+  }
+
+  &__icon {
+    margin: 0 u.remCalc(17.5);
+    width: u.remCalc(21);
+  }
+
+  &__content-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+
+    @include u.breakpoint(desktop) {
+      flex-direction: row;
+    }
+
+    p:first-of-type {
+      @include u.breakpoint(desktop) {
+        margin-right: u.remCalc(32);
+      }
+    }
+
+    p:last-of-type {
+      @include u.breakpoint(desktop) {
+        margin-right: u.remCalc(56);
+      }
+    }
+  }
+}

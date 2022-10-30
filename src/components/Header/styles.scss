@@ -10,9 +10,12 @@
   pointer-events: none;
   top: 0;
   left: 0;
+  z-index: 1;
+  background-color: u.$background;
 
   @include u.breakpoint(desktop) {
     padding: u.remCalc(50) u.remCalc(40);
+    background-color: transparent;
   }
 
   &__logo {
