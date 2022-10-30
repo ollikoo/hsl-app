@@ -9,6 +9,12 @@ You can create your query(s) in sandbox here: https://api.digitransit.fi/graphiq
 
 Use the provided designs.
 
+# To run application in Docker
+
+1. Download and install Docker and node.js.
+
+2. To build and start containers, in the root directory, you can run `docker compose up`. The container is built and started and the UI is available at [http://localhost:3000](http://localhost:3000).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -16,6 +22,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm i`
+
+and/or
 
 ### `npm start`
 

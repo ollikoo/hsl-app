@@ -1,6 +1,6 @@
 {
   "name": "hsl-app",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.1",
@@ -21,6 +21,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "sass": "^1.55.0",
+    "serve": "^14.0.1",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
@@ -29,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "serve": "serve -s build -l 8080"
   },
   "eslintConfig": {
     "extends": [
