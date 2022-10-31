@@ -25,8 +25,6 @@ const Stop = () => {
     };
   }, [startPolling, stopPolling]);
 
-  console.log("data:", data, error, loading);
-
   return (
     <div className="bus-stop">
       <Header />

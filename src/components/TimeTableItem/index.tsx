@@ -18,9 +18,9 @@ const TimeTableItem = ({ stoptime, currentTime }: TimeTableItemProps) => {
     stoptime?.serviceDay &&
     stoptime?.trip?.routeShortName
   ) {
-    const minutesLate = Math.round(
-      (stoptime.realtimeDeparture - stoptime.scheduledDeparture) / 60
-    );
+    const secondsLate =
+      stoptime.realtimeDeparture - stoptime.scheduledDeparture;
+    const minutesLate = Math.round(secondsLate / 60);
 
     const departureTime = DateTime.fromSeconds(
       stoptime.serviceDay + stoptime.realtimeDeparture
@@ -42,7 +42,7 @@ const TimeTableItem = ({ stoptime, currentTime }: TimeTableItemProps) => {
       <div className="time-table-item">
         <div
           className={`time-table-item__indicator time-table-item__indicator--${
-            minutesLate <= 0 ? "success" : "alert"
+            secondsLate <= 0 ? "success" : "alert"
           }`}
         />
         <div className="time-table-item__icon">
@@ -51,8 +51,10 @@ const TimeTableItem = ({ stoptime, currentTime }: TimeTableItemProps) => {
         <div className="time-table-item__content-wrap">
           <p>
             {stoptime.trip.routeShortName}{" "}
-            {minutesLate > 0
-              ? `${minutesLate} minute${minutesLate > 1 ? "s" : ""} late`
+            {secondsLate > 0
+              ? `(${minutesLate > 0 ? minutesLate : `Less than`} minute${
+                  minutesLate > 1 ? "s" : ""
+                } late)`
               : ""}
           </p>
           <p className="light">{`In ${untilDeparture} Minute${

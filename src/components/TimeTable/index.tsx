@@ -1,5 +1,5 @@
 import "./styles.scss";
-import { BusStopQuery, RealtimeState } from "../../generated/graphql";
+import { BusStopQuery } from "../../generated/graphql";
 import useCurrentTime from "../../hooks/useCurrentTime";
 import TimeTableItem from "../TimeTableItem";
 
@@ -7,7 +7,7 @@ export type Stoptime = {
   scheduledDeparture?: number | null;
   realtimeDeparture?: number | null;
   realtime?: boolean | null;
-  realtimeState?: RealtimeState | null;
+  realtimeState?: string | null;
   serviceDay?: number | null;
   trip?: { __typename?: "Trip"; routeShortName?: string | null } | null;
 } | null;
