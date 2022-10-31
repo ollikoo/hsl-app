@@ -1,57 +1,59 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import TimeTableItem from ".";
-import { DateTime } from "luxon";
+import { DateTime, Interval } from "luxon";
 import { Stoptime } from "../TimeTable";
 
 const time = DateTime.now().setZone("Europe/Helsinki");
+const midnight = DateTime.fromObject({
+  year: time.year,
+  month: time.month,
+  day: time.day,
+});
+const interval = Interval.fromDateTimes(midnight, time).length("seconds");
 
 const stopOnTime: Stoptime = {
-  scheduledDeparture: time.plus({ seconds: 3600 }).toSeconds(),
-  realtimeDeparture: time.plus({ seconds: 3600 }).toSeconds(),
-  realtime: false,
-  realtimeState: "SCHEDULED",
-  serviceDay: time.toSeconds(),
+  scheduledDeparture: interval,
+  realtimeDeparture: interval,
+  serviceDay: midnight.toSeconds(),
   trip: {
-    __typename: "Trip",
     routeShortName: "15",
   },
 };
 
 const stopDelayedForMinute: Stoptime = {
-  scheduledDeparture: time.plus({ seconds: 3600 }).toSeconds(),
-  realtimeDeparture: time.plus({ seconds: 3660 }).toSeconds(),
-  realtime: true,
-  realtimeState: "SCHEDULED",
-  serviceDay: time.toSeconds(),
+  scheduledDeparture: interval + 60,
+  realtimeDeparture: interval + 120,
+  serviceDay: midnight.toSeconds(),
   trip: {
-    __typename: "Trip",
     routeShortName: "15",
   },
 };
 
 const stopDelayedForTwoMinutes: Stoptime = {
-  scheduledDeparture: time.plus({ seconds: 3600 }).toSeconds(),
-  realtimeDeparture: time.plus({ seconds: 3720 }).toSeconds(),
-  realtime: true,
-  realtimeState: "SCHEDULED",
-  serviceDay: time.toSeconds(),
+  scheduledDeparture: interval + 120,
+  realtimeDeparture: interval + 240,
+  serviceDay: midnight.toSeconds(),
   trip: {
-    __typename: "Trip",
     routeShortName: "15",
   },
 };
 
 const stopDelayedForSecond: Stoptime = {
-  scheduledDeparture: time.plus({ seconds: 3600 }).toSeconds(),
-  realtimeDeparture: time.plus({ seconds: 3601 }).toSeconds(),
-  realtime: true,
-  realtimeState: "SCHEDULED",
-  serviceDay: time.toSeconds(),
+  scheduledDeparture: interval + 60,
+  realtimeDeparture: interval + 61,
+  serviceDay: midnight.toSeconds(),
   trip: {
-    __typename: "Trip",
     routeShortName: "15",
   },
 };
+
+test("renders stop departuring now", () => {
+  render(<TimeTableItem currentTime={time} stoptime={stopOnTime} />);
+
+  const regex = /In 0 Minutes/;
+  const message = screen.getByText(regex);
+  expect(message).toHaveTextContent(regex);
+});
 
 test("renders on time indicator", () => {
   const { container } = render(
@@ -84,21 +86,19 @@ test("renders 1 second delayed stop indicator", () => {
 });
 
 test("renders less than minute delayed message", () => {
-  const { container } = render(
-    <TimeTableItem currentTime={time} stoptime={stopDelayedForSecond} />
-  );
+  render(<TimeTableItem currentTime={time} stoptime={stopDelayedForSecond} />);
+  const str = "15 (Less than minute late)";
+  const message = screen.getByText(str);
 
-  expect(container.firstChild?.childNodes[2]?.firstChild).toHaveTextContent(
-    "15 (Less than minute late)"
-  );
+  expect(message).toHaveTextContent(str);
 });
 
 test("renders more than minute delayed message", () => {
-  const { container } = render(
+  render(
     <TimeTableItem currentTime={time} stoptime={stopDelayedForTwoMinutes} />
   );
+  const str = "15 (2 minutes late)";
+  const message = screen.getByText(str);
 
-  expect(container.firstChild?.childNodes[2]?.firstChild).toHaveTextContent(
-    "15 (2 minutes late)"
-  );
+  expect(message).toHaveTextContent(str);
 });

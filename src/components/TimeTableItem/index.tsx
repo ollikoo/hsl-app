@@ -50,15 +50,15 @@ const TimeTableItem = ({ stoptime, currentTime }: TimeTableItemProps) => {
         </div>
         <div className="time-table-item__content-wrap">
           <p>
-            {stoptime.trip.routeShortName}{" "}
+            {stoptime.trip.routeShortName}
             {secondsLate > 0
-              ? `(${minutesLate > 0 ? minutesLate : `Less than`} minute${
+              ? ` (${minutesLate > 0 ? minutesLate : `Less than`} minute${
                   minutesLate > 1 ? "s" : ""
                 } late)`
               : ""}
           </p>
           <p className="light">{`In ${untilDeparture} Minute${
-            untilDeparture > 1 ? "s" : ""
+            untilDeparture > 1 || untilDeparture === 0 ? "s" : ""
           } / ${departureHour}:${departureMinute}`}</p>
         </div>
       </div>
