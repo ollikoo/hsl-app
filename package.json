@@ -54,6 +54,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "2.13.7",
     "@graphql-codegen/client-preset": "1.1.1",
-    "@types/luxon": "^3.0.2"
+    "@types/luxon": "^3.0.2",
+    "jest-watch-typeahead": "^0.6.5"
   }
 }

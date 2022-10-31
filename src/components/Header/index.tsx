@@ -1,7 +1,7 @@
 import useCurrentTime from "../../hooks/useCurrentTime";
 import "./styles.scss";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const time = useCurrentTime();
@@ -9,9 +9,9 @@ const Header = () => {
   return (
     <header className="header" role="navigation">
       <div className="header__logo">
-        <NavLink to="/" aria-label="Link to homepage">
+        <Link to="/" aria-label="Link to homepage">
           <Logo />
-        </NavLink>
+        </Link>
       </div>
       <div className="header__time">
         {time && (

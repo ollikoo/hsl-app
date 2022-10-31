@@ -5,7 +5,7 @@ const useCurrentTime = () => {
   const [time, setTime] = useState<DateTime | undefined>();
 
   const getTime = useCallback(() => {
-    const t: any = DateTime.now().setZone("Europe/Helsinki");
+    const t = DateTime.now().setZone("Europe/Helsinki");
 
     if (t) {
       setTime(t);
